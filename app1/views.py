@@ -7,7 +7,7 @@ from .models import Student,Course_Taken
 
 def index(request):
 	return render(request,'index.html')
-
+#merge test
 def add_student(request):
 	if request.method == 'POST':
 		form = CreateStudentForm(request.POST)
