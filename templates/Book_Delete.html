@@ -2,6 +2,8 @@
 <form action= "{{ book.id }}"  method="POST">
 
     {% csrf_token %}
-    <a class="btn btn-warning" href="Book_List.html">Cancel</a>
-
-    <input class="btn btn-danger" href="Book_List.html" type="submit" name="Confirm"></form>
+<p><input type='submit' value='Yes' href="Book_List.html"/></p>
+</form>
+<form method="get" action="Book_List.html">
+<button type="submit">Cancel</button>
+</form>
