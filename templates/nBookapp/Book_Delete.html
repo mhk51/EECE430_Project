@@ -1,9 +1,9 @@
-<p>Are you sure you want to delete {{book.title}}?</p>
+<p>Are you sure you want to delete {{book}}?</p>
 <form action= "{{ book.id }}"  method="POST">
 
     {% csrf_token %}
-<p><input type='submit' value='Yes' href="Book_List.html"/></p>
+<input type='submit' value='Yes'>
 </form>
-<form method="get" action="Book_List.html">
+<form method="get" action="{%url 'Book_List'%}">
 <button type="submit">Cancel</button>
 </form>

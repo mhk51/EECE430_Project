@@ -5,11 +5,21 @@ from .forms import CreateCategoryForm, CreateBookForm, CreateContactForm
 from .models import *
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView
+from django.urls import reverse
 
 
 class Book_List(ListView):
     model = Book
+    
+def bookList(request):
+    item = Book.objects.all()
+    # print("Myoutput", item)
+    return render(request, 'nBookapp/Book_Details.html', {'item':item})
 
+
+# def confirm_Delete(request,pk):
+#     instance = Book.objects.get(pk=id)
+#     return render(request,"nBookapp/Book_Delete.html",{'title':instance.title})
 
 def Book_Delete(request, pk):
    #instance = Book.objects.get(pk=id)
@@ -25,17 +35,17 @@ def Book_Delete(request, pk):
    if request.method == "POST":
        obj.delete()
        #render(request, 'Book_List.html')
-       return render(request, 'Book_Delete.html', context)
+       return HttpResponseRedirect('/success')
    else:
        context = {"book": obj}
-       return render(request, 'Book_Delete.html', context)
+       return render(request, 'nBookapp/Book_Delete.html', context)
        # HttpResponseRedirect('/success')
    #return redirect('Book_List.html')
    #context ={"object": obj}
    #return HttpResponseRedirect('/success')
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'nBookapp/index.html')
 
 
 def contact(request):
@@ -80,7 +90,7 @@ def add_category(request):
             formdata = form.cleaned_data
             name = formdata['name']
             Category.objects.create(name=name)
-            return HttpResponseRedirect('/success')
+            return HttpResponseRedirect(reverse('success'))
     else:
         form = CreateCategoryForm()
     return render(request, 'nBookapp/add_category.html', {'form': form})
@@ -88,3 +98,4 @@ def add_category(request):
 
 def success(request):
     return render(request, 'nBookapp/success.html')
+
