@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nBookapp.apps.NbookappConfig',
-    # 'Accounts.apps.AccountsConfig',
+    'Accounts.apps.AccountsConfig',
 
 ]
 

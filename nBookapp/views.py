@@ -35,7 +35,7 @@ def Book_Delete(request, pk):
    if request.method == "POST":
        obj.delete()
        #render(request, 'Book_List.html')
-       return HttpResponseRedirect('/success')
+       return HttpResponseRedirect(reverse('success'))
    else:
        context = {"book": obj}
        return render(request, 'nBookapp/Book_Delete.html', context)
@@ -57,7 +57,7 @@ def contact(request):
             email = formdata['email']
             subject = formdata['subject']
             Contact.objects.create(username=username, email=email, subject=subject)
-            return HttpResponseRedirect('/success')
+            return HttpResponseRedirect(reverse('success'))
     else:
         form = CreateContactForm()
     return render(request, 'nBookapp/contact.html', {'form': form})
@@ -77,7 +77,7 @@ def add_book(request):
             summary = formdata['summary']
             # pdf = formdata['pdf']
             Book.objects.create(title=title, author=author, ISBN=ISBN, category=category, price=price, summary=summary)
-            return HttpResponseRedirect('/success')
+            return HttpResponseRedirect(reverse('success'))
     else:
         form = CreateBookForm()
     return render(request, 'nBookapp/add_book.html', {'form': form})
