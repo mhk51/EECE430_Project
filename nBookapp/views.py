@@ -99,3 +99,5 @@ def add_category(request):
 def success(request):
     return render(request, 'nBookapp/success.html')
 
+def search(request):
+    return render(request,'nBookapp/search.html')
