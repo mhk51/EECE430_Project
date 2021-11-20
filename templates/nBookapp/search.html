@@ -3,14 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Search</title>
+
+<style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td{
+            border: 1px black solid;
+            padding: 5px;
+        }
+    </style>
+
 </head>
 <body>
-    <h2>Search for a Book: </h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit"/>
-</form>
+    <h2>Results for Searched Books: </h2>
+
+{% if searched_books %}
+     <table>
+     <tr>
+         <th>title</th>
+         <th>ISBN</th>
+         <th>price</th>
+         <th>author</th>
+         <th>summary</th>
+         <th>category</th>
+     </tr>
+     
+       {% for book in searched_books %}
+       <tr>
+        <td>{{book.title}}</td>
+        <td>{{book.ISBN}}</td>
+        <td>{{book.price}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.summary}}</td>
+        <td>{{book.category}}</td>
+        </tr>
+      {% endfor %}
+      
+      </table>
+      {% else %}
+          <h3>Book Not Available! Check Back Later</h3>
+      {% endif %}
+
 <form method="get" action="{%url 'index'%}">
     <button type="submit">Back To Main</button>
 </form>

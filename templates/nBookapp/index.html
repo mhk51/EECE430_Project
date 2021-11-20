@@ -8,7 +8,12 @@
 </head>
 <body>
 <h2>Welcome To Your Library!</h2>
-<p><a href= "{%url 'search'%}">Search for a Book</a></p>
+<form method = 'POST' action = "{%url 'search'%}">
+         {% csrf_token %}
+          <input type="text" name="name_of_book" placeholder="Enter name of book" maxlength="100" required id="id_name_of_book">
+          <button type="submit">Search</button>
+</form>
+{% comment %} <p><a href= "{%url 'search'%}">Search for a Book</a></p> {% endcomment %}
 <p><a href="{%url 'Book_List'%}">View Books List</a></p>
 <p><a href="add_book.html">Add Book</a></p>
 <p><a href="add_category.html">Add Category</a></p>

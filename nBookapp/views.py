@@ -99,5 +99,6 @@ def add_category(request):
 def success(request):
     return render(request, 'nBookapp/success.html')
 
-def search(request):
-    return render(request,'nBookapp/search.html')
+def search_book(request):
+    searched_books = Book.objects.filter(title__icontains = request.POST.get('name_of_book'))
+    return render(request, 'nBookapp/search.html', {'searched_books':searched_books})
