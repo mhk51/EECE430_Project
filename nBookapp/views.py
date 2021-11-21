@@ -95,6 +95,16 @@ def add_category(request):
         form = CreateCategoryForm()
     return render(request, 'nBookapp/add_category.html', {'form': form})
 
+def update_Book(request, id=id):
+    obj = get_object_or_404(Product, id=id)
+    form = CreateBookForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect(reverse('success'))
+    context = {
+        'form': form
+    }
+    return render(request, "nBookapp/update_Book.html", context)
 
 def success(request):
     return render(request, 'nBookapp/success.html')

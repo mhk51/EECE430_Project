@@ -2,7 +2,10 @@
 {% for book in object_list %}
 {{ book.title }} - {{ book.author }} - {{ book.ISBN }} <br>
 <td>
-    <a href="/Book_Delete/{{ book.id }}" class="btn btn-danger badge">Delete</a>
+    <a href="/Book_Delete/{{ book.id }}" >Delete</a>
+</td>
+<td>
+    <a href="/update_Book/{{ book.id }}" >Update</a>
 </td>
 {% endfor %} 
 <form method="get" action="{%url 'index'%}">

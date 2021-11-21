@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.urls import path
-from .views import add_book, add_category, success, index, contact, Book_List, Book_Delete,bookList,search_book
+from .views import add_book, add_category, success, index, contact, Book_List, Book_Delete,bookList,search_book, update_Book
 #from . import views
 
 
@@ -9,6 +9,8 @@ urlpatterns = [
     path('success/',success, name= "success"),
     path('Book_List/',bookList,name ="Book_List"),
     path('search/',search_book,name ="search"),
+    path('update_Book/<int:id>', update_Book, name='update_Book'),
+
     #  url('Book_Delete/Book_Delete', success),
     #  url('Book_Delete/Book_List', Book_List.as_view()),
      #url('^$', add_book)
