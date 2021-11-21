@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="501aed73-236a-4818-af25-96f779f742f8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nBookapp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/nBookapp/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nBookapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/nBookapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nBookapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/nBookapp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/nBookapp/Book_Delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nBookapp/Book_Delete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/nBookapp/Book_Details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nBookapp/Book_Details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/nBookapp/Book_List.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nBookapp/Book_List.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/nBookapp/update_Book.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nBookapp/update_Book.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

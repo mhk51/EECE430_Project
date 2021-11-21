@@ -29,6 +29,7 @@
          <th>summary</th>
          <th>category</th>
          <th> Delete</th>
+	     <th> Update</th>
      </tr>
  <tr>
      {% for st in item %}
@@ -41,6 +42,11 @@
      <td>
         <form method="get" action="{%url 'Book_Delete' st.id%}">
         <button type="submit">Delete</button>
+        </form>
+    </td>
+    <td>
+        <form method="get" action="{%url 'update_Book' st.id%}">
+        <button type="submit">Update</button>
         </form>
     </td>
 

@@ -21,28 +21,7 @@ def bookList(request):
 #     instance = Book.objects.get(pk=id)
 #     return render(request,"nBookapp/Book_Delete.html",{'title':instance.title})
 
-def Book_Delete(request, pk):
-   #instance = Book.objects.get(pk=id)
-   #instance.delete()
-   #return redirect("Book_List")
-   context = {}
-   #order = Book.objects.get(id=pk)
-   #if request.method == "POST":
-    #    order.delete()
-    #    return redirect('Book_List.html')
-   #obj = get_object_or_404(Book, ISBN=ISBN)
-   obj = Book.objects.get(id = pk)
-   if request.method == "POST":
-       obj.delete()
-       #render(request, 'Book_List.html')
-       return HttpResponseRedirect(reverse('success'))
-   else:
-       context = {"book": obj}
-       return render(request, 'nBookapp/Book_Delete.html', context)
-       # HttpResponseRedirect('/success')
-   #return redirect('Book_List.html')
-   #context ={"object": obj}
-   #return HttpResponseRedirect('/success')
+
 
 def index(request):
     return render(request, 'nBookapp/index.html')
@@ -95,14 +74,38 @@ def add_category(request):
         form = CreateCategoryForm()
     return render(request, 'nBookapp/add_category.html', {'form': form})
 
-def update_Book(request, id=id):
-    obj = get_object_or_404(Product, id=id)
+def Book_Delete(request, pk):
+   #instance = Book.objects.get(pk=id)
+   #instance.delete()
+   #return redirect("Book_List")
+   context = {}
+   #order = Book.objects.get(id=pk)
+   #if request.method == "POST":
+    #    order.delete()
+    #    return redirect('Book_List.html')
+   #obj = get_object_or_404(Book, ISBN=ISBN)
+   obj = Book.objects.get(id = pk)
+   if request.method == "POST":
+       obj.delete()
+       #render(request, 'Book_List.html')
+       return HttpResponseRedirect(reverse('success'))
+   else:
+       context = {"book": obj}
+       return render(request, 'nBookapp/Book_Delete.html', context)
+       # HttpResponseRedirect('/success')
+   #return redirect('Book_List.html')
+   #context ={"object": obj}
+   #return HttpResponseRedirect('/success')
+
+def update_Book(request, id):
+    obj = Book.objects.get(id=id)
     form = CreateBookForm(request.POST or None, instance=obj)
     if form.is_valid():
         form.save()
         return HttpResponseRedirect(reverse('success'))
     context = {
-        'form': form
+            'form': form,
+           "book": obj
     }
     return render(request, "nBookapp/update_Book.html", context)
 
