@@ -30,6 +30,7 @@
          <th>category</th>
          <th> Delete</th>
 	     <th> Update</th>
+         <th> Borrow</th>
      </tr>
  <tr>
      {% for st in item %}
@@ -49,6 +50,14 @@
         <button type="submit">Update</button>
         </form>
     </td>
+    <td>
+    {%if st.isBorrowed is False%}
+        <form method="get" action="{%url 'Book_Borrow' st.id%}">
+        <button type="submit">Borrow</button>
+        </form>
+    {%else%}
+        <p>Book Already Borrowed</p>
+    {%endif%}
 
      
  </tr>
