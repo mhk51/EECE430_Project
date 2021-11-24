@@ -16,6 +16,7 @@ class Book(models.Model):
     author = models.CharField(max_length=50)
     summary = models.TextField(max_length=300)
     category = models.CharField(max_length=15)
+    isBorrowed = models.BooleanField(default=False)
     #pdf = models.FileField(upload_to='pdf')
 
     def __str__(self):
