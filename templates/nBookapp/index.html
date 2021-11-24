@@ -6,47 +6,19 @@
     <title>Home</title>
 
 </head>
-<style type="text/css">
-		div {text-align: center;}
-		
-		body{
-			background-image:url(https://wallpaperaccess.com/full/253337.jpg);
-			background-size: cover;
-			background-attachment: fixed;
-		}
-
-		.content{
-			background: white;
-			width: 50%;
-			padding: 40px;
-			margin: 100px auto;
-			font-family: calibri;
-			border-radius: 10px;
-		}
-
-		center{
-			font-size: 25px;
-			color: black;
-			background: white;
-			text-align: center;
-		}
-		
-
-</style>
-
 <body>
-<div>
-<h2 style="background-color:white;" >Welcome To Your Library!</h2>
+<h2>Welcome To Your Library!</h2>
 <form method = 'POST' action = "{%url 'search'%}">
          {% csrf_token %}
           <input type="text" name="name_of_book" placeholder="Enter name of book" maxlength="100" required id="id_name_of_book">
           <button type="submit">Search</button>
 </form>
 {% comment %} <p><a href= "{%url 'search'%}">Search for a Book</a></p> {% endcomment %}
-<center><a href="{%url 'Book_List'%}">View Books List</a></center>
-<center><a href="add_book.html">Add Book</a></center>
-<center><a href="add_category.html">Add Category</a></center>
-<center><a href="contact.html">Contact Us</a></center>
-</div>
+<p><a href="{%url 'Book_List'%}">View Books List</a></p>
+<p><a href="add_book.html">Add Book</a></p>
+<p><a href="add_category.html">Add Category</a></p>
+<p><a href="contact.html">Contact Us</a></p>
+
+
 </body>
 </html>
