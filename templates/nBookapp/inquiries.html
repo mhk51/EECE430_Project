@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Inquiries</title>
+    <style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td{
+            border: 1px black solid;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+ <h1>List of Inquiries</h1>
+{% if ques %}
+ <h1>Show Data</h1>
+ <!-- <h3>{{item}}</h3> -->
+ <table>
+     <tr>
+         <th>Username</th>
+         <th>Email</th>
+         <th>Subject</th>
+         <th>Status</th>
+         <th>Delete</th>
+     </tr>
+ <tr>
+     {% for st in ques %}
+     <td>{{st.username}}</td>
+     <td>{{st.email}}</td>
+     <td>{{st.subject}}</td>
+    <td>
+    {%if st.isAnswered is False%}
+        <form method="get" action="{%url 'Answer_Inquiry' st.id%}">
+        <button type="submit">Answer Inquiry</button>
+        </form>
+    {%else%}
+        <p>Inquiry Already Answered!</p>
+    {%endif%}
+    <td>
+        <form method="get" action="{%url 'Inquiry_Delete' st.id%}">
+        <button type="submit">Delete</button>
+        </form>
+    </td>
+     
+ </tr>
+     {% endfor %}
+</table>
+{% else %}
+ <h1>No Data</h1>
+{% endif %}
+<form method="get" action="{%url 'Librarian_index'%}">
+    <button type="submit">Back To Main</button>
+</form>
+</body>
+</html> 

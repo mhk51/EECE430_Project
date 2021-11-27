@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <title>Home</title>
+
+</head>
+<body>
+<h2>Dear Librarian, Welcome Back!</h2>
+<form method = 'POST' action = "{%url 'Librarian_search'%}">
+         {% csrf_token %}
+          <input type="text" name="name_of_book" placeholder="Enter name of book" maxlength="100" required id="id_name_of_book">
+          <button type="submit">Search</button>
+</form>
+{% comment %} <p><a href= "{%url 'Librarian_search'%}">Search for a Book</a></p> {% endcomment %}
+<p><a href="{%url 'Book_List_Librarian'%}">View Books List</a></p>
+<p><a href="{%url 'add_book'%}">Add Book</a></p>
+<p><a href="{%url 'add_category'%}">Add Category</a></p>
+<p><a href="{%url 'inquiries'%}">View/Answer Inquiries</a></p>
+
+
+</body>
+</html>

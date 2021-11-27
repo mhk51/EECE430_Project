@@ -3,13 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="501aed73-236a-4818-af25-96f779f742f8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Accounts/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nBookapp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/nBookapp/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nBookapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/nBookapp/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nBookapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/nBookapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nBookapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/nBookapp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Accounts/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Accounts/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Accounts/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/nBookapp/Book_Delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nBookapp/Book_Delete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/nBookapp/Book_Details.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nBookapp/Book_Details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/nBookapp/Book_List.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nBookapp/Book_List.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/nBookapp/Book_Details.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/nBookapp/Book_List.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/nBookapp/add_book.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nBookapp/add_book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/nBookapp/add_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nBookapp/add_category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/nBookapp/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nBookapp/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/nBookapp/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/nBookapp/search.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/nBookapp/success.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/nBookapp/update_Book.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/nBookapp/update_Book.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,6 +88,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />

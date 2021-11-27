@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Book Details</title>
+    <style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th,td{
+            border: 1px black solid;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+ <h1>Book Page</h1>
+{% if item %}
+ <h1>Show Data</h1>
+ <!-- <h3>{{item}}</h3> -->
+ <table>
+     <tr>
+         <th>title</th>
+         <th>ISBN</th>
+         <th>price</th>
+         <th>author</th>
+         <th>summary</th>
+         <th>category</th>
+         <th> Delete</th>
+	     <th> Update</th>
+     </tr>
+ <tr>
+     {% for st in item %}
+     <td>{{st.title}}</td>
+     <td>{{st.ISBN}}</td>
+     <td>{{st.price}}</td>
+     <td>{{st.author}}</td>
+     <td>{{st.summary}}</td>
+     <td>{{st.category}}</td>
+     <td>
+        <form method="get" action="{%url 'Book_Delete' st.id%}">
+        <button type="submit">Delete</button>
+        </form>
+    </td>
+    <td>
+        <form method="get" action="{%url 'update_Book' st.id%}">
+        <button type="submit">Update</button>
+        </form>
+    </td>
+
+     
+ </tr>
+     {% endfor %}
+</table>
+{% else %}
+ <h1>No Data</h1>
+{% endif %}
+<form method="get" action="{%url 'Librarian_index'%}">
+    <button type="submit">Back To Main</button>
+</form>
+</body>
+</html>

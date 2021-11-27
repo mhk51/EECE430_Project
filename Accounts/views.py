@@ -10,7 +10,7 @@ from .models import *
 from .forms import CreateUserForm
 
 
-def registerPage(request):
+def User_registerPage(request):
 	form= CreateUserForm()
 
 	if request.method == 'POST':
@@ -19,12 +19,17 @@ def registerPage(request):
 			form.save()
 			user=form.cleaned_data.get('username')
 			messages.success(request, 'Account Was Created for '+ user)
-			return redirect('login')
+			return redirect('User_login')
 
 
 	context={'form':form}
 	return render(request,'Accounts/register.html',context)
 
+
+#def Librarian_index(request):
+#    return render(request, 'nBookapp/Librarian_index.html')
+#def User_index(request):
+#    return render(request, 'nBookapp/User_index.html')
 def loginPage(request):
 
 	if request.method == 'POST':
@@ -34,10 +39,25 @@ def loginPage(request):
 		user=authenticate(request,username=username,password=password)
 		if user is not None:
 			login(request,user)
-			return redirect('index')
+			return redirect('User_index')
 
 	context={}
-	return render(request,'Accounts/login.html',context)
+	return render(request,'Accounts/User_login.html',context)
+
+def loginPage_L(request):
+
+	if request.method == 'POST':
+		username=request.POST.get('username')
+		password=request.POST.get('password')
+
+		user=authenticate(request,username=username,password=password)
+		if user is not None:
+			login(request,user)
+			return redirect('Librarian_index')
+
+	context={}
+	return render(request,'Accounts/Librarian_login.html',context)
+
 
 def homePage(request):
 	context={}
