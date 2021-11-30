@@ -29,6 +29,7 @@
          <th>summary</th>
          <th>category</th>
          <th> Borrow</th>
+         <th> Shopping Cart</th>
      </tr>
  <tr>
      {% for st in item %}
@@ -46,6 +47,16 @@
     {%else%}
         <p>Book Already Borrowed</p>
     {%endif%}
+    <td/>
+        <form method="get" action="{% url 'cart:add_to_cart' st.id %}">
+        <button type="submit">Add to Cart</button>
+        </form>
+    <td>
+        
+        <form method="get" action="{% url 'cart:order_summary' %}">
+        <button type="submit">Go to Cart</button>
+        </form>
+   <td>
 
      
  </tr>

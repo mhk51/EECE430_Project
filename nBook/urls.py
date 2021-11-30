@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('Accounts.urls')),
     path('homepage/', include('nBookapp.urls')),
+    path('cart/', include('cart.urls')),
 ]

@@ -1,4 +1,5 @@
 from django.db import models
+
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=50)
@@ -9,7 +10,7 @@ class Category(models.Model):
 
 class Book(models.Model):
     objects = None
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, default = "")
     ISBN = models.IntegerField(max_length=20)
     price = models.IntegerField(default=0)
     #cover_image = models.ImageField(upload_to='img', blank=True, null=True)
