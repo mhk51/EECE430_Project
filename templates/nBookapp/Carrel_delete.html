@@ -1,0 +1,10 @@
+<p>Are you sure you want to delete {{carrel}}?</p>
+<form action= "{{ carrel.id }}"  method="POST">
+
+    {% csrf_token %}
+<input type='submit' value='Yes'>
+</form>
+
+<form method="get" action="{%url 'Carrel_List_Lib'%}">
+<button type="submit">Cancel</button>
+</form>

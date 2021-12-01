@@ -39,6 +39,7 @@ def loginPage(request):
 		user=authenticate(request,username=username,password=password)
 		if user is not None:
 			login(request,user)
+			#context = {'user':user}
 			return redirect('User_index')
 
 	context={}

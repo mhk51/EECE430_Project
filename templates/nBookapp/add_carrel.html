@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Carrel</title>
+</head>
+<body>
+    <h2>Add a Carrel to the DataBase: </h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit"/>
+</form>
+<form method="get" action="{%url 'Librarian_index'%}">
+    <button type="submit">Back To Main</button>
+</form>
+</body>
+</html>

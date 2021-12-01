@@ -1,7 +1,7 @@
 import os
 
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import CreateCategoryForm, CreateBookForm, CreateContactForm
+from .forms import CreateCategoryForm, CreateBookForm, CreateContactForm, CreateCarrelForm
 from .models import *
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView
@@ -155,3 +155,46 @@ def Answer_Inquiry(request, pk):
    else:
        context = {"contact": obj}
        return render(request, 'nBookapp/Answer_Inquiry.html', context)
+
+def Reserve(request, pk):
+    context = {}
+    obj = Carrel.objects.get(id = pk)
+    if request.method == "POST":
+        obj.isReserved = True
+        obj.save()
+        return HttpResponseRedirect(reverse('U_success'))
+    else:
+        context = {"carrel": obj}
+        return render(request, 'nBookapp/Carrel_validation.html', context)
+
+def add_carrel(request):
+    if request.method == 'POST':
+        form = CreateCarrelForm(request.POST)
+        if form.is_valid():
+            formdata = form.cleaned_data
+            timeslot = formdata['timeslot']
+            Carrel.objects.create(timeslot=timeslot,isReserved= False)
+            return HttpResponseRedirect(reverse('L_success'))
+    else:
+        form = CreateCarrelForm()
+    return render(request, 'nBookapp/add_carrel.html', {'form': form})
+
+def Carrel_List(request):
+    #Carrel.objects.create(name = "", email = "", ID = 1, major = "", beginningtimeslot=0, endtimeslot=1, isReserved = False)
+    obj = Carrel.objects.all()
+    return render(request, 'nBookapp/Carrel_List.html', {'obj':obj})
+
+def Carrel_Delete(request, pk):
+    context = {}
+    obj = Carrel.objects.get(id = pk)
+    if request.method == "POST":
+        obj.delete()
+        return HttpResponseRedirect(reverse('L_success'))
+    else:
+        context = {"carrel": obj}
+        return render(request, 'nBookapp/Carrel_Delete.html', context)
+
+def Carrel_List_Lib(request):
+    #Carrel.objects.create(name = "", email = "", ID = 1, major = "", beginningtimeslot=0, endtimeslot=1, isReserved = False)
+    obj = Carrel.objects.all()
+    return render(request, 'nBookapp/Carrel_List_Lib.html', {'obj':obj})
