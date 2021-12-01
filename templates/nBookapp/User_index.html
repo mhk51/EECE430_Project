@@ -2,12 +2,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-    <title>Home</title>
-
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+</style>
 </head>
-<body>
-<h2> Welcome To Your Library!</h2>
+<body style="background-color:#AFCACA;">
+
+<ul>
+  <h1 style="color: white;">&nbsp &nbsp &nbsp Hello User, Welcome to your Library!</h1>
+</ul>
+
 <form method = 'POST' action = "{%url 'User_search'%}">
          {% csrf_token %}
           <input type="text" name="name_of_book" placeholder="Enter name of book" maxlength="100" required id="id_name_of_book">
@@ -16,7 +26,7 @@
 {% comment %} <p><a href= "{%url 'User_search'%}">Search for a Book</a></p> {% endcomment %}
 <p><a href="{%url 'Book_List_User'%}">View Books List</a></p>
 <p><a href="{%url 'contact'%}">Contact Us</a></p>
-
+<p><a href="{% url 'cart:order_summary' %}" > Shopping Cart</a></p>
 
 </body>
 </html>

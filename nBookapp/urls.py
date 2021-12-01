@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from django.urls import path
 from .views import add_book, add_category,Librarian_index,Inquiry_Delete, User_index,U_success, L_success, contact, Book_Delete,search_book_user, search_book_librarian, update_Book,Book_Borrow, Answer_Inquiry, bookList_L, bookList_U, inquiries
-#from . import views
+
 
 
 urlpatterns = [
