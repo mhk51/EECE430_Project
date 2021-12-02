@@ -1,26 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Book Details</title>
-    <style>
-        table {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th,td{
-            border: 1px black solid;
-            padding: 5px;
-        }
-    </style>
-</head>
-<body>
- <h1>Book Page</h1>
+{% extends 'base3.html' %}
+{% block content %}
+
+
+ <h1 class="d-flex justify-content-center pt-3">Book Page</h1>
 {% if item %}
- <h1>Show Data</h1>
+
  <!-- <h3>{{item}}</h3> -->
- <table>
+ <table class="d-flex justify-content-center table table-hover table-striped">
      <tr>
          <th>title</th>
          <th>ISBN</th>
@@ -41,12 +27,12 @@
      <td>{{st.category}}</td>
      <td>
         <form method="get" action="{%url 'Book_Delete' st.id%}">
-        <button type="submit">Delete</button>
+        <button type="submit" class="btn btn-outline-danger">Delete</button>
         </form>
     </td>
     <td>
         <form method="get" action="{%url 'update_Book' st.id%}">
-        <button type="submit">Update</button>
+        <button type="submit" class="btn btn-outline-warning">Update</button>
         </form>
     </td>
 
@@ -58,7 +44,6 @@
  <h1>No Data</h1>
 {% endif %}
 <form method="get" action="{%url 'Librarian_index'%}">
-    <button type="submit">Back To Main</button>
+    <button type="submit" class="btn btn-outline-primary">Back To Main</button>
 </form>
-</body>
-</html>
+{% endblock %}

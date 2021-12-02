@@ -1,54 +1,14 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Checkout</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/checkout.css' %}">
-    <style>
-      #checkoutMethods {
-        background: #fff;
-        border-radius: 2px;
-        display: inline-block;
-        max-height: 700px;
-        margin: 1rem;
-        position: relative;
-        width: 700px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 
-      }
-    </style>
-</head>
+{% extends "base.html" %}
+{% include 'messages.html' %}
 
-<body>
-    {% include 'messages.html' %}
-    <div class="container">
-    
-          <!-- <div class="panel-body">
-            <h5>Enter Voucher Code Below<br><small>If multiple, separate each with comma</small></h5>
-
-            <div>
-              <form action="." method="post">
-                {% csrf_token %}
-                <input type="text"  name="voucher_codes" class="form-control" id="voucher_code" required>
-                <input type="hidden"  name="order_id" value="{{ order.id }}">
-                <br>
-                <span>
-                  <input type="submit" class="btn btn-warning pull-right" value="Apply Voucher"> 
-                </span>
-              </form>
-            </div> -->
-          </div>
-        </div>
-      </div>
-      <div class="col-8 col-xs-12">
-        <table class="table">
-          <tr>
-            <td><h4>Order Summary</h4></td>
-          </tr>
-          <tr>
-            <td>
+{% block content %}
+<section>
+  <h3 class="d-flex justify-content-center pt-5" >Checkout</h3>
+      <div class="col-12 col-xs-12 ">
+        <table class="table table-hover table-striped text-center">
+                     
+          
               {% for item in order.get_cart_items %}
                 <tr>
                   <td>{{ item }}</td>
@@ -63,62 +23,15 @@
           </tr>
         </table>
         <button onclick="toggleDisplay();" class="btn btn-danger" style="width: 100%;">Pay Cash Upon Delivery</button>
-        <a href="{% url 'cart:order_summary' %}" class="pull-left btn btn-primary">Back</a>
       </div>
-     </div>
-    </section>
+   
+    
     
 
 
   
 
-</div>
+</section>
 
+{% endblock %}
 <!-- script for the stripe form -->
-<script src="{% static 'js/checkout.js' %}"></script>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
-<script src="https://js.braintreegateway.com/web/dropin/1.13.0/js/dropin.min.js"></script>
-<script>
-  var form = document.querySelector('#payment-form');
-  var client_token = '{{ client_token }}';
-
-  braintree.dropin.create({
-    authorization: client_token,
-    container: '#bt-dropin',
-    paypal: {
-      flow: 'vault'
-    }
-  }, function (createErr, instance) {
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-
-      instance.requestPaymentMethod(function (err, payload) {
-        if (err) {
-          console.log('Error', err);
-          return;
-        }
-
-        // Add the nonce to the form and submit
-        document.querySelector('#nonce').value = payload.nonce;
-        form.submit();
-      });
-    });
-  });
-</script>
-
-<!-- script for toggling display of the form -->
-<script type="text/javascript">
-    function toggleDisplay() {
-      var x = document.getElementById("collapseStripe");
-      if (x.style.display === "none") {
-          x.style.display = "block";
-      } else {
-          x.style.display = "none";
-      }
-    };
-</script>
-
-</body>
-</html>

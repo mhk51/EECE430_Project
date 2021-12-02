@@ -1,26 +1,27 @@
+{% extends 'base3.html' %}
+{% block content %}
 
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-    <title>Home</title>
+<div class="container pt-5"> 
+<div class="row">
+	<div class="col-4 card " style="height: 150px"><h2 class="d-flex justify-content-center pt-5"><a href="{%url 'Book_List_Librarian'%}">View Books List</a></h2></div>
+	<div class="col-4 card " style="height: 150px"><h2 class="d-flex justify-content-center pt-5"><a href="{%url 'add_book'%}">Add Book</a></h2></div>
+	<div class="col-4 card " style="height: 150px"><h2 class="d-flex justify-content-center pt-5"><a href="{%url 'add_category'%}">Add Category</a></h2></div>
+	
+</div>
+<div class="row">
+	<div class="col-4 card " style="height: 150px"><h2 class="d-flex justify-content-center pt-5"><a href="{%url 'add_carrel'%}">Add Carrel</a></h2></div>
+	<div class="col-4 card " style="height: 150px"><h2 class="d-flex justify-content-center pt-5"><a href="{%url 'Carrel_List_Lib'%}">View/Delete Carrel</a></h2></div>
+	<div class="col-4 card " style="height: 150px"><h2 class="d-flex justify-content-center pt-5"><a href="{%url 'inquiries'%}">View/Answer Inquiries</a></h2></div>
+	
+</div>
 
-</head>
-<body>
-<h2>Dear Librarian, Welcome Back!</h2>
-<form method = 'POST' action = "{%url 'Librarian_search'%}">
-         {% csrf_token %}
-          <input type="text" name="name_of_book" placeholder="Enter name of book" maxlength="100" required id="id_name_of_book">
-          <button type="submit">Search</button>
-</form>
-{% comment %} <p><a href= "{%url 'Librarian_search'%}">Search for a Book</a></p> {% endcomment %}
-<p><a href="{%url 'Book_List_Librarian'%}">View Books List</a></p>
-<p><a href="{%url 'add_book'%}">Add Book</a></p>
-<p><a href="{%url 'add_category'%}">Add Category</a></p>
-<p><a href="{%url 'add_carrel'%}">Add Carrel</a></p>
-<p><a href="{%url 'Carrel_List_Lib'%}">View/Delete Carrel</a></p>
-<p><a href="{%url 'inquiries'%}">View/Answer Inquiries</a></p>
+</div>
 
 
-</body>
-</html>
+
+
+
+
+
+
+{% endblock %}

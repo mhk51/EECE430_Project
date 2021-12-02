@@ -1,11 +1,19 @@
-<p>Please change the desired attributes of the book " {{book}} ":</p>
+{% extends "base3.html"%}
+{% block content %}
+
+<p class="pt-2">Please change the desired attributes of the book " {{book}} ":</p>
 <form action="{{ book.id }}" method='POST'>
 {% csrf_token %}
 {{ form.as_p }}
     <!--{{ form }}-->
-    <input type='submit' value='Submit' />
-</form>
-
+    <div class="row">
+    	<div class="col-3">
+    <input type='submit' class="btn btn-success pt-2 "value='Submit' />
+</form> </div>
+<div class="col-3">
 <form method="get" action="{%url 'Book_List_Librarian'%}">
-<button type="submit">Cancel</button>
+<button type="submit" class="btn btn-danger ">Cancel</button>
 </form>
+</div>
+</div>
+{% endblock %}

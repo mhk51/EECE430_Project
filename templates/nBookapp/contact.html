@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Contact Us</title>
-</head>
-<body>
-    <h2>Our Clients are ready to answer any inquiry! </h2>
-<form method="post">
-    {% csrf_token %}
+{% extends "base2.html"%}
+{% block content %}
+<div class="container ">
+	<h2 class="d-flex justify-content-center">Our Clients are ready to answer any inquiry! </h2>
+	<h5 class="d-flex justify-content-center">Contact us today, and get reply with in 24 hours!</h5>
+	<div class="row"> 
+		<div class="col-9">
+			
+ 
+  <form id="contact" action="" method="post">
+  	{% csrf_token %}
     {{ form }}
-    <input type="submit" value="Submit"/>
-</form>
-<h3>Contact Info:</h3>
+      <button name="submit" type="submit" value="Submit" id="contact-submit" data-submit="...Sending">Submit</button>
+    
+  </form>
+		</div>
+		<div class="col-3 pt-5">
+			<h3>Contact Info:</h3>
 <h5>Address:</h5>
 <h6>Lebanon, Beirut, Bliss Street, AUB.</h6>
 
@@ -20,8 +24,10 @@
 
 <h5>Email: </h5>
 <h6>ourproject@ask.com</h6>
-<form method="get" action="{%url 'User_index'%}">
-    <button type="submit">Back To Main</button>
-</form>
-</body>
-</html>
+		</div>
+	</div>
+</div>
+  
+ 
+
+{% endblock%}

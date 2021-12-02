@@ -1,26 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Book Details</title>
-    <style>
-        table {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th,td{
-            border: 1px black solid;
-            padding: 5px;
-        }
-    </style>
-</head>
-<body>
- <h1>Book Page</h1>
+{% extends "base2.html" %}
+{% block content %}
+ <h1 class="d-flex justify-content-center pt-3">Book Page</h1>
 {% if item %}
- <h1>Show Data</h1>
+ 
  <!-- <h3>{{item}}</h3> -->
- <table>
+ <table class="d-flex justify-content-center table table-hover table-striped" >
      <tr>
          <th>title</th>
          <th>ISBN</th>
@@ -29,8 +13,8 @@
          <th>summary</th>
          <th>category</th>
          <th> Borrow</th>
-         <th>Shop</th>
-         <th>View Cart</th>
+         <th> Add to Cart</th>
+         <th> Go to Cart</th>
      </tr>
  <tr>
      {% for st in item %}
@@ -43,31 +27,32 @@
     <td>
     {%if st.isBorrowed is False%}
         <form method="get" action="{%url 'Book_Borrow' st.id%}">
-        <button type="submit">Borrow</button>
+        <button type="submit" class="btn btn-outline-primary">Borrow</button>
         </form>
     {%else%}
         <p>Book Already Borrowed</p>
     {%endif%}
-    <td/>
+    <td>
         <form method="get" action="{% url 'cart:add_to_cart' st.id %}">
-        <button type="submit">Add to Cart</button>
+        <button type="submit" class="btn btn-outline-success"> <i class="fas fa-cart-plus"></i></button>
+
         </form>
     <td>
         
         <form method="get" action="{% url 'cart:order_summary' %}">
-        <button type="submit">Go to Cart</button>
+        <button type="submit" class="btn btn-outline-warning"> <i class="fas fa-shopping-cart"></i></button>
+
         </form>
-   <td>
+   </td>
 
      
  </tr>
      {% endfor %}
 </table>
+
 {% else %}
  <h1>No Data</h1>
 {% endif %}
-<form method="get" action="{%url 'User_index'%}">
-    <button type="submit">Back To Main</button>
+
 </form>
-</body>
-</html> 
+{% endblock %}

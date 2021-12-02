@@ -4,11 +4,12 @@ from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.core.mail import send_mail
+import random
 
 # Create your views here.
 from .models import *
 from .forms import CreateUserForm
-
 
 def User_registerPage(request):
 	form= CreateUserForm()
@@ -39,11 +40,23 @@ def loginPage(request):
 		user=authenticate(request,username=username,password=password)
 		if user is not None:
 			login(request,user)
+			token = random.randrange(100000,10000000)
+			send_mail('Email Verification','Please use the following token: '+str(token),'mohammad.kachmar1201@gmail.com',
+			[user.email],fail_silently=False,) 
 			#context = {'user':user}
-			return redirect('User_index')
+			return redirect('Activate',token)
 
 	context={}
 	return render(request,'Accounts/User_login.html',context)
+
+def activate(request,token):
+	if request.method == 'POST':
+		tokeninput = request.POST.get('tokeninput')
+		print(token,tokeninput)
+		if token == int(tokeninput):
+			print('correct')
+			return redirect('User_index')
+	return render(request,'Accounts/Activate.html')
 
 def loginPage_L(request):
 

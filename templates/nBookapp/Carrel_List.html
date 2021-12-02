@@ -1,26 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Reserve a Carrel</title>
-    <style>
-        table {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th,td{
-            border: 1px black solid;
-            padding: 5px;
-        }
-    </style>
-</head>
-<body>
- <h1>Carrel Page</h1>
+{% extends 'base2.html' %}
+{% block content%}
+
+ <h1 class="d-flex justify-content-center pt-5">Carrels' Availibity</h1>
 {% if obj %}
- <h1>Show Data</h1>
+ 
  <!-- <h3>{{item}}</h3> -->
- <table>
+ <table class="d-flex justify-content-center table table-hover table-striped pt-3">
      <tr>
          <th>Time Slot</th>
          <th>Reserved</th>
@@ -31,7 +16,7 @@
     <td>
     {%if st.isReserved is False%}
         <form method="get" action="{%url 'Reserve' st.id%}">
-        <button type="submit">Reserve</button>
+        <button type="submit" class="btn btn-outline-success">Reserve</button>
         </form>
     {%else%}
         <p>Seat Already Reserved</p>
@@ -43,8 +28,5 @@
 {% else %}
  <h1>No Data</h1>
 {% endif %}
-<form method="get" action="{%url 'User_index'%}">
-    <button type="submit">Back To Main</button>
-</form>
-</body>
-</html>
+
+{% endblock %}

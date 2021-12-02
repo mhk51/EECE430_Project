@@ -1,29 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Reserve a Carrel</title>
-    <style>
-        table {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th,td{
-            border: 1px black solid;
-            padding: 5px;
-        }
-    </style>
-</head>
-<body>
- <h1>Carrel Page</h1>
+{% extends 'base3.html' %}
+{% block content %}
+<h1 class="d-flex justify-content-center pt-3">Carrel Page</h1>
 {% if obj %}
- <h1>Show Data</h1>
+
  <!-- <h3>{{item}}</h3> -->
- <table>
+ <table class="d-flex justify-content-center table table-hover table-striped" >
      <tr>
          <th>Time Slot</th>
          <th>Reserved</th>
+         <th></th>
      </tr>
  <tr>
      {% for st in obj %}
@@ -36,7 +21,7 @@
     {%endif%}
     <td>
         <form method="get" action="{%url 'Carrel_Delete' st.id%}">
-        <button type="submit">Delete</button>
+        <button type="submit" class="btn btn-outline-danger">Delete</button>
         </form>
     </td>
      
@@ -47,7 +32,6 @@
  <h1>No Data</h1>
 {% endif %}
 <form method="get" action="{%url 'Librarian_index'%}">
-    <button type="submit">Back To Main</button>
+    <button type="submit" class="btn btn-outline-primary">Back To Main</button>
 </form>
-</body>
-</html>
+{% endblock %}

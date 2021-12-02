@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">The vivliothíki</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    	{% with url_name=request.resolver_match.url_name %}
+      <li class="nav-item  {% if url_name == 'User_index' %}active{% endif %}">
+        <a class="nav-link" href=" {%url 'User_index'%}">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item {% if url_name == 'Book_List_User' %}active{% endif %}">
+        <a class="nav-link" href="{%url 'Book_List_User'%}">View Books List</a>
+      </li>
+      <li class="nav-item {% if url_name == 'Carrel_List' %}active{% endif %}">
+        <a class="nav-link" href="{%url 'Carrel_List'%}">Reserve a Carrel</a>
+      </li>
+      <li class="nav-item {% if url_name == 'order_summary' %}active{% endif %}">
+        <a class="nav-link" href="{%url 'cart:order_summary'%}">Shopping Cart</a>
+      </li>
+      <li class="nav-item {% if url_name == 'contact' %}active{% endif %}">
+        <a class="nav-link" href="{%url 'contact'%}">Contact us</a>
+      </li>
+      {% endwith %}
+    </ul>
+    <form method = 'POST' action = "{%url 'User_search'%}" class="form-inline my-2 my-lg-0">
+    	{% csrf_token %}
+      <input class="form-control mr-sm-2" type="text" name="name_of_book" placeholder="Enter name of book" aria-label="Search">
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+     
+  </div>
+</nav>
+
+

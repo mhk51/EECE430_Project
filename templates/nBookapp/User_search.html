@@ -1,26 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Search</title>
+{% extends 'base2.html' %}
+{% block content%}
 
-<style>
-        table {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th,td{
-            border: 1px black solid;
-            padding: 5px;
-        }
-    </style>
-
-</head>
-<body>
-    <h2>Results for Searched Books: </h2>
+    <h2 class="d-flex justify-content-center pt-5 ">Results for Searched Books: </h2>
 
 {% if searched_books %}
-     <table>
+     <table class="d-flex justify-content-center table table-hover table-striped">
      <tr>
          <th>title</th>
          <th>ISBN</th>
@@ -46,8 +30,5 @@
           <h3>Book Not Available! Check Back Later</h3>
       {% endif %}
 
-<form method="get" action="{%url 'User_index'%}">
-    <button type="submit">Back To Main</button>
-</form>
-</body>
-</html>
+
+{% endblock %}
