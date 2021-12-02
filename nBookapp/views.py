@@ -204,9 +204,10 @@ def Carrel_List_Lib(request):
     return render(request, 'nBookapp/Carrel_List_Lib.html', {'obj':obj})
 
 def userBook_List(request):
-    searched_books = Book.objects.filter(owner__icontains = "moe")
+    searched_books = Book.objects.filter(owner__icontains = request.user)
     for book in searched_books:
         book.remainingDays = 30 - (datetime.now()-book.borrowed_time.replace(tzinfo=None) ).days
+        book.save()
     return render(request,'nBookapp/myBooks.html',{'item':searched_books})
 
 def returnBook(request,pk):
