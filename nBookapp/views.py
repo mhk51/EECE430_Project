@@ -67,7 +67,7 @@ def add_book(request):
             # owner = formdata['owner']
             # isBorrowed = formdata['isBorrowed']
             # pdf = formdata['pdf']
-            Book.objects.create(title=title, author=author, ISBN=ISBN, category=category, price=price, summary=summary,isBorrowed=False,owner = 'No owner',remainingDays=30,borrowed_time = datetime.now())
+            Book.objects.create(title=title, author=author, ISBN=ISBN, category=category, price=price, summary=summary,isBorrowed=False,owner = 'No owner',remainingDays=0,borrowed_time = datetime.now())
             return HttpResponseRedirect(reverse('L_success'))
     else:
         form = CreateBookForm()
