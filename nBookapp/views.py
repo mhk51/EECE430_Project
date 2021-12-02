@@ -6,6 +6,7 @@ from .models import *
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView
 from django.urls import reverse
+from datetime import datetime, timedelta
 
 
 class Book_List(ListView):
@@ -63,9 +64,10 @@ def add_book(request):
             price = formdata['price']
             # coverpage = formdata['coverpage']
             summary = formdata['summary']
+            # owner = formdata['owner']
             # isBorrowed = formdata['isBorrowed']
             # pdf = formdata['pdf']
-            Book.objects.create(title=title, author=author, ISBN=ISBN, category=category, price=price, summary=summary,isBorrowed=False)
+            Book.objects.create(title=title, author=author, ISBN=ISBN, category=category, price=price, summary=summary,isBorrowed=False,owner = 'No owner',remainingDays=30,borrowed_time = datetime.now())
             return HttpResponseRedirect(reverse('L_success'))
     else:
         form = CreateBookForm()
@@ -132,12 +134,14 @@ def search_book_librarian(request):
     return render(request, 'nBookapp/Librarian_search.html', {'searched_books':searched_books})
 
 def Book_Borrow(request, pk):
-
    context = {}
    obj = Book.objects.get(id = pk)
+   print(obj.borrowed_time)
    if request.method == "POST":
-       print(obj.isBorrowed)
        obj.isBorrowed = True
+       obj.owner = str(request.user)
+       obj.borrowed_time = datetime.now()
+       obj.remainingDays = 30
        obj.save()
        return HttpResponseRedirect(reverse('U_success'))
    else:
@@ -148,7 +152,6 @@ def Answer_Inquiry(request, pk):
    context = {}
    obj = Contact.objects.get(id = pk)
    if request.method == "POST":
-       print(obj.isAnswered)
        obj.isAnswered = True
        obj.save()
        return HttpResponseRedirect(reverse('L_success'))
@@ -161,6 +164,7 @@ def Reserve(request, pk):
     obj = Carrel.objects.get(id = pk)
     if request.method == "POST":
         obj.isReserved = True
+        obj.owner_Carrel = str(request.user)
         obj.save()
         return HttpResponseRedirect(reverse('U_success'))
     else:
@@ -173,7 +177,7 @@ def add_carrel(request):
         if form.is_valid():
             formdata = form.cleaned_data
             timeslot = formdata['timeslot']
-            Carrel.objects.create(timeslot=timeslot,isReserved= False)
+            Carrel.objects.create(timeslot=timeslot,isReserved= False,owner_Carrel ="No owner")
             return HttpResponseRedirect(reverse('L_success'))
     else:
         form = CreateCarrelForm()
@@ -198,3 +202,21 @@ def Carrel_List_Lib(request):
     #Carrel.objects.create(name = "", email = "", ID = 1, major = "", beginningtimeslot=0, endtimeslot=1, isReserved = False)
     obj = Carrel.objects.all()
     return render(request, 'nBookapp/Carrel_List_Lib.html', {'obj':obj})
+
+def userBook_List(request):
+    searched_books = Book.objects.filter(owner__icontains = "moe")
+    for book in searched_books:
+        book.remainingDays = 30 - (datetime.now()-book.borrowed_time.replace(tzinfo=None) ).days
+    return render(request,'nBookapp/myBooks.html',{'item':searched_books})
+
+def returnBook(request,pk):
+    context = {}
+    obj = Book.objects.get(id = pk)
+    if request.method == "POST":
+        obj.isBorrowed = False
+        obj.owner = "No Owner"
+        obj.save()
+        return HttpResponseRedirect(reverse('U_success'))
+    else:
+        context = {"book": obj}
+        return render(request, 'nBookapp/returnBook.html', context)

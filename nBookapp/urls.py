@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.urls import path
-from .views import add_book, add_category,Librarian_index,Inquiry_Delete, User_index,U_success, L_success, contact, Book_Delete,search_book_user, search_book_librarian, update_Book,Book_Borrow, Answer_Inquiry, bookList_L, bookList_U, inquiries, Carrel_List, add_carrel, Reserve, Carrel_Delete, Carrel_List_Lib
+from .views import add_book, add_category,Librarian_index,Inquiry_Delete, User_index,U_success, L_success, contact, Book_Delete,search_book_user, search_book_librarian, update_Book,Book_Borrow, Answer_Inquiry, bookList_L, bookList_U, inquiries, Carrel_List, add_carrel, Reserve, Carrel_Delete, Carrel_List_Lib,userBook_List,returnBook
 #from . import views
 
 
@@ -17,6 +17,8 @@ urlpatterns = [
     path('inquiries/',inquiries,name ="inquiries"),
     path('update_Book/<int:id>', update_Book, name="update_Book"),
     path('borrow_Book/<int:pk>',Book_Borrow,name = "Book_Borrow"),
+    path('myBooks/',userBook_List,name = "userBooks"),
+    path('returnBook/<int:pk>',returnBook,name = "returnBook"),
 
     #  url('Book_Delete/Book_Delete', success),
     #  url('Book_Delete/Book_List', Book_List.as_view()),

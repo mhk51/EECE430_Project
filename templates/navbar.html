@@ -10,6 +10,9 @@
       <li class="nav-item  {% if url_name == 'User_index' %}active{% endif %}">
         <a class="nav-link" href=" {%url 'User_index'%}">Home<span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item {% if url_name == 'userBooks' %}active{% endif %}">
+        <a class="nav-link" href="{%url 'userBooks'%}">My Books</a>
+      </li>
       <li class="nav-item {% if url_name == 'Book_List_User' %}active{% endif %}">
         <a class="nav-link" href="{%url 'Book_List_User'%}">View Books List</a>
       </li>
@@ -28,6 +31,10 @@
     	{% csrf_token %}
       <input class="form-control mr-sm-2" type="text" name="name_of_book" placeholder="Enter name of book" aria-label="Search">
       <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <form method = 'POST' action=" {%url 'User_login'%}" class="form-inline my-2 my-lg-0">
+      {%csrf_token%}
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Log Out</button>
     </form>
      
   </div>

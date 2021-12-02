@@ -8,6 +8,7 @@
      <tr>
          <th>Time Slot</th>
          <th>Reserved</th>
+         <th>Owner</th>
          <th></th>
      </tr>
  <tr>
@@ -19,6 +20,7 @@
     {%else%}
         <p>Seat Already Reserved</p>
     {%endif%}
+        <td>{{st.owner_Carrel}}</td>
     <td>
         <form method="get" action="{%url 'Carrel_Delete' st.id%}">
         <button type="submit" class="btn btn-outline-danger">Delete</button>

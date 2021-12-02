@@ -1,0 +1,22 @@
+{% extends "base3.html" %}
+{% block content %}
+
+
+<h3 class="pt-5">Are you sure you want to return {{book}}?</h3>
+<div class="row pt-3">
+
+	<div class="col-3">
+<form action= "{{ book.id }}"  method="POST">
+
+    {% csrf_token %}
+<input type='submit'class="btn btn-outline-success" value='Yes'>
+</form>
+</div>
+<div class="col-2">
+
+<form method="get" action="{%url 'userBooks'%}">
+<button type="submit"  class="btn btn-outline-danger">Cancel</button>
+</form>
+</div>
+
+{% endblock %}

@@ -14,6 +14,8 @@
          <th>author</th>
          <th>summary</th>
          <th>category</th>
+         <th>Owner</th>
+         <th>Status</th>
          <th> Delete</th>
 	     <th> Update</th>
      </tr>
@@ -25,6 +27,12 @@
      <td>{{st.author}}</td>
      <td>{{st.summary}}</td>
      <td>{{st.category}}</td>
+     <td>{{st.owner}}</td>
+     {% if st.isBorrowed%}
+     <td>Borrowed</td>
+     {%else%}
+     <td>Not Borrowed</td>
+     {%endif%}
      <td>
         <form method="get" action="{%url 'Book_Delete' st.id%}">
         <button type="submit" class="btn btn-outline-danger">Delete</button>
